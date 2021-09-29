@@ -7,12 +7,26 @@ namespace HW1_Task8
     {
         static void Main(string[] args)
         {
-            var array = new double[] { 2, -4.5, 222, 656.9, -888.9, 0, 54.6, 34.2, 7777, 90.9, -0.8 };
-            (double max, double min, double average, double mediane) tupple = Method(array);
-            Console.WriteLine($"Максимальный положительный элемент {tupple.max}");
-            Console.WriteLine($"Минимальный положительный элемент {tupple.min}");
-            Console.WriteLine($"Среднее арифметическое положительных элементов {tupple.average}");
-            Console.WriteLine($"Средний положительный элемент {tupple.mediane}");
+            try
+            {
+                var array = new double[] { -4.5, -888.9, -0.8 };
+                (double max, double min, double average, double mediane) tupple = Method(array);
+                Console.WriteLine($"Максимальный положительный элемент {tupple.max}");
+                Console.WriteLine($"Минимальный положительный элемент {tupple.min}");
+                Console.WriteLine($"Среднее арифметическое положительных элементов {tupple.average}");
+                Console.WriteLine($"Средний положительный элемент {tupple.mediane}");
+            }
+            catch(Exception ex)
+            {
+                if(ex is ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Положительных чисел не найдено...");
+                }
+                else 
+                {
+                    Console.WriteLine("Неизвестная ошибка...");
+                }
+            }
         }
 
         public static (double, double, double, double) Method(double[] array)
