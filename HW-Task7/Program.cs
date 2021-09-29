@@ -9,13 +9,20 @@ namespace HW_Task7
             
         }
 
-        static int[] DeleteItems(int[] array, int number)
+        static int[] Method(int[] array, params int[] del)
         {
-            for(int i = 1; i < number; i++)
+            int counter = 0;
+            for(int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine($"Введите удаляемое число номер {i}");
-                
+                for(int j = 0; j < del.Length; j++)
+                {
+                    if(array[i] == del[j])
+                    {
+                        counter++;
+                    }
+                }
             }
+
         }
     }
 }
